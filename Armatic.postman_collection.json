@@ -1,0 +1,362 @@
+{
+	"info": {
+		"_postman_id": "dde0f443-4a62-4cd5-9ead-c4eecbd95e78",
+		"name": "Armatic",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Customers",
+			"description": "",
+			"item": [
+				{
+					"name": "List of all customers",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {},
+						"url": {
+							"raw": "https://api.armatic.com/customers",
+							"protocol": "https",
+							"host": [
+								"api",
+								"armatic",
+								"com"
+							],
+							"path": [
+								"customers"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Items",
+			"description": "",
+			"item": [
+				{
+					"name": "List of all Items",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {},
+						"url": {
+							"raw": "https://api.armatic.com/items",
+							"protocol": "https",
+							"host": [
+								"api",
+								"armatic",
+								"com"
+							],
+							"path": [
+								"items"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Tax Rates",
+			"description": "",
+			"item": [
+				{
+					"name": "List of all Tax Rates",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {},
+						"url": {
+							"raw": "https://api.armatic.com/tax_rates",
+							"protocol": "https",
+							"host": [
+								"api",
+								"armatic",
+								"com"
+							],
+							"path": [
+								"tax_rates"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Plans",
+			"description": "",
+			"item": [
+				{
+					"name": "List of all Plans",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {},
+						"url": {
+							"raw": "https://api.armatic.com/plans",
+							"protocol": "https",
+							"host": [
+								"api",
+								"armatic",
+								"com"
+							],
+							"path": [
+								"plans"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Coupons",
+			"description": "",
+			"item": [
+				{
+					"name": "List of all Coupons",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {},
+						"url": {
+							"raw": "https://api.armatic.com/coupons",
+							"protocol": "https",
+							"host": [
+								"api",
+								"armatic",
+								"com"
+							],
+							"path": [
+								"coupons"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Subscriptions",
+			"description": "",
+			"item": [
+				{
+					"name": "List of all Subscriptions",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {},
+						"url": {
+							"raw": "https://api.armatic.com/subscriptions?date&start_date&end_date",
+							"protocol": "https",
+							"host": [
+								"api",
+								"armatic",
+								"com"
+							],
+							"path": [
+								"subscriptions"
+							],
+							"query": [
+								{
+									"key": "date",
+									"value": null,
+									"description": "Date attribute to filter results by: current_period_start,\ncurrent_period_end, created_at"
+								},
+								{
+									"key": "start_date",
+									"value": null,
+									"description": "Range start date in YYYY-MM- DD format"
+								},
+								{
+									"key": "end_date",
+									"value": null,
+									"description": "Range end date in YYYY-MM- DD format"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Retrieve a Subscription",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "1232bffc-983b-4a2f-9c15-53cc120da562",
+								"type": "text/javascript",
+								"exec": [
+									"pm.environment.set(\"subscription:id\", \"1589166336003541421\");"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {},
+						"url": {
+							"raw": "https://api.armatic.com/subscriptions/{{subscription:id}}",
+							"protocol": "https",
+							"host": [
+								"api",
+								"armatic",
+								"com"
+							],
+							"path": [
+								"subscriptions",
+								"{{subscription:id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create a Subscription",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"subscription\": {\n    \"customer_id\": \"1589115092564182539\",\n    \"plan_id\": \"1556673663682480540\",\n    \"tax_rate_id\": \"1542819783693567193\",\n    \"interval\": \"month\",\n    \"interval_count\": 2,\n    \"trial_period_days\": 0,\n    \"currency\": \"USD\",\n    \"current_period_start\": \"2017-08-28T12:16:51.591Z\",\n    \"current_period_end\": \"2017-09-28T12:16:51.591Z\",\n    \"net_terms\": \"15\",\n    \"auto\": false,\n    \"notes\": \"Test Notes\",\n    \"terms_and_conditions\": \"SOME TERMS\",\n    \"coupon_ids\": [],\n    \"line_items\": [\n      {\n        \"quantity\": 1.0,\n        \"amount\": 190000,\n        \"price\": 190000,\n        \"description\": \"Reasearcher Monthly\",\n        \"tax\": false,\n        \"line_item_type\": \"recurring\",\n        \"item_id\": null\n      },\n      {\n        \"quantity\": 1.0,\n        \"amount\": 40000,\n        \"price\": 40000,\n        \"tax\": true,\n        \"description\": \"Setup Fee\",\n        \"line_item_type\": \"one_time\",\n        \"item_id\": \"null\"\n      }\n    ]\n  }\n}"
+						},
+						"url": {
+							"raw": "https://api.armatic.com/subscriptions",
+							"protocol": "https",
+							"host": [
+								"api",
+								"armatic",
+								"com"
+							],
+							"path": [
+								"subscriptions"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Cancel a Subscription",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {},
+						"url": {
+							"raw": "https://api.armatic.com/subscriptions/{{subscription:id}}/cancel?immediately",
+							"protocol": "https",
+							"host": [
+								"api",
+								"armatic",
+								"com"
+							],
+							"path": [
+								"subscriptions",
+								"{{subscription:id}}",
+								"cancel"
+							],
+							"query": [
+								{
+									"key": "immediately",
+									"value": null,
+									"description": "If true subscription will be canceled immediately, otherwise it will remain active until the end of current billing period"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "991bf87c-00b9-4044-b7c8-c03ab74ee6cf",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "433a4b56-8911-4813-bdf1-e4b5871e3c13",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "e51130fe-76d1-4b42-8814-1c2b0b903c53",
+			"key": "Content-Type",
+			"value": "application/json",
+			"type": "string",
+			"description": ""
+		}
+	]
+}
